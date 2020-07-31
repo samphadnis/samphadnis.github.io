@@ -25,7 +25,7 @@ mobilityData.then(function(data) {
 
     var mobilityLine = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.mean));})
-                        .curve(curveCardinal);
+                        .curve(d3.curveCardinal);
 
     mobilityChartGroup.append("path").attr("d", mobilityLine(data));
 
