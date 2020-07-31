@@ -36,13 +36,19 @@ function addText(x, y, text) {
     svg.append("text").attr("x",x).attr("y",y).text(text);
 }
 
+function addLine(x1, y1, x2, y2) {
+
+    svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2).attr("stroke","blue").attr("stroke-width","1");
+}
+
 var mobilityData= d3.csv("data/us_states_data_transposed.csv");
 
 mobilityData.then(function(data) {
 
     renderData(data, 0);
 
-    addText(125,250,"Low mobility period");
+    addText(125,250,"Low mobility");
+    addText(125,250,155,250);
 
     /* var height  = 300;
     var width   = 500;
