@@ -21,14 +21,26 @@ mobilityData.then(function(data) {
 
     var margin = {left:50,right:50, top:40, bottom:0};
 
-    var chartGroup = svg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+    var mobilityChartGroup = svg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+
+    var mobilityLine = d3.line().x(function(d){return x(parseDate(d.date));})
+                        .y(function(d){return y(Number(d.mean));})
+                        .curve(curveCardinal);
+
+    mobilityChartGroup.append("path").attr("d", mobilityLine(data));
+
+    mobilityChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
+    mobilityChartGroup.append("g").attr("class", "y axis").call(yAxis);
+
+    covidChartXTranslate = margin.left + 250;
+    var covidChartGroup = svg.append("g").attr("transform", "translate("+covidChartXTranslate+", "+margin.top+")");
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.mean));});
 
-    chartGroup.append("path").attr("d", line(data));
+    covidChartGroup.append("path").attr("d", line(data));
 
-    chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
-    chartGroup.append("g").attr("class", "y axis").call(yAxis);
-    console.log(data);
+    covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
+    covidChartGroup.append("g").attr("class", "y axis").call(yAxis);
+    
 });
