@@ -5,7 +5,7 @@ var width   = 500;
 
 var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
 
-function renderData(data, translateX) {
+function renderData(data, translateX, parseDate) {
     
     var max     = d3.max(data, function(d){return Number(d.number);});
     var minDate = d3.min(data, function(d){return parseDate(d.date);});
@@ -78,3 +78,10 @@ mobilityData.then(function(data) {
     
 });
 
+var covidData= d3.csv("data/us_covid_cases.csv");
+
+covidData.then(function(data) {
+
+    renderData(data, 600);
+
+});
