@@ -1,9 +1,9 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-/* var height  = 300;
+var height  = 300;
 var width   = 500;
 
-var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%"); */
+var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
 
 function renderData(data, translateX) {
     
@@ -35,9 +35,9 @@ var mobilityData= d3.csv("data/us_states_data_transposed.csv");
 
 mobilityData.then(function(data) {
 
-    //renderData(data, 0);
+    renderData(data, 0);
 
-    var height  = 300;
+    /* var height  = 300;
     var width   = 500;
 
     var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
@@ -65,8 +65,8 @@ mobilityData.then(function(data) {
     mobilityChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     mobilityChartGroup.append("g").attr("class", "y axis").call(yAxis);
 
-    covidChartXTranslate = margin.left + 500;
-    var covidChartGroup = svg.append("g").attr("transform", "translate("+covidChartXTranslate+", "+margin.top+")");
+    covidChartXTranslate    = margin.left + 500;
+    var covidChartGroup     = svg.append("g").attr("transform", "translate("+covidChartXTranslate+", "+margin.top+")");
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.number));});
@@ -74,7 +74,7 @@ mobilityData.then(function(data) {
     covidChartGroup.append("path").attr("d", mobilityLine(data));
 
     covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
-    covidChartGroup.append("g").attr("class", "y axis").call(yAxis);
+    covidChartGroup.append("g").attr("class", "y axis").call(yAxis); */
     
 });
 
