@@ -32,7 +32,7 @@ mobilityData.then(function(data) {
     mobilityChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     mobilityChartGroup.append("g").attr("class", "y axis").call(yAxis);
 
-    covidChartXTranslate = margin.left + 800;
+    covidChartXTranslate = margin.left + 600;
     var covidChartGroup = svg.append("g").attr("transform", "translate("+covidChartXTranslate+", "+margin.top+")");
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
