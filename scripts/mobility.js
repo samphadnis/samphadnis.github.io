@@ -5,7 +5,7 @@ var width   = 500;
 
 var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
 
-function renderData(data, translateX, parseDate) {
+function renderData(data, translateX) {
     
     var max     = d3.max(data, function(d){return Number(d.number);});
     var minDate = d3.min(data, function(d){return parseDate(d.date);});
