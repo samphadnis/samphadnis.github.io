@@ -1,15 +1,15 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-d3.csv("data/us_states_data_transposed.csv")
-.row(function(d){return {date:parseDate(d.date),mean:Number(d.mean.trim())};})
-.get(function(error, data){
+var mobilityData= d3.csv("data/us_states_data_transposed.csv");
+
+mobilityData.then(function(data) {
 
     var height  = 300;
     var width   = 500;
     
-    var max     = d3.max(data, function(d){return d.mean;});
-    var minDate = d3.min(data, function(d){return d.date;});
-    var maxDate = d3.max(data, function(d){return d.date;});
+    var max     = d3.max(data, function(d){return Number(d.mean);});
+    var minDate = d3.min(data, function(d){return parseDate(d.date);});
+    var maxDate = d3.max(data, function(d){return parseDate(d.date);});
 
     var y = d3.scaleLinear().domain([0,max]).range([height,0]);
     var x = d3.scaleTime().domain([minDate,maxDate]).range([0,width]);
@@ -23,8 +23,8 @@ d3.csv("data/us_states_data_transposed.csv")
 
     var chartGroup = svg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
-    var line = d3.line().x(function(d){return x(d.date);})
-                        .y(function(d){return y(d.mean);});
+    var line = d3.line().x(function(d){return x(parseDate(d.date));})
+                        .y(function(d){return y(Number(d.mean));});
 
     chartGroup.append("path").attr("d", line(data));
 
