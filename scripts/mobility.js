@@ -35,9 +35,9 @@ var mobilityData= d3.csv("data/us_states_data_transposed.csv");
 
 mobilityData.then(function(data) {
 
-    renderData(data, 0);
+    //renderData(data, 0);
     
-    /* var max     = d3.max(data, function(d){return Number(d.mean);});
+    var max     = d3.max(data, function(d){return Number(d.number);});
     var minDate = d3.min(data, function(d){return parseDate(d.date);});
     var maxDate = d3.max(data, function(d){return parseDate(d.date);});
 
@@ -52,7 +52,7 @@ mobilityData.then(function(data) {
     var mobilityChartGroup = svg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
     var mobilityLine = d3.line().x(function(d){return x(parseDate(d.date));})
-                        .y(function(d){return y(Number(d.mean));})
+                        .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
 
     mobilityChartGroup.append("path").attr("d", mobilityLine(data));
@@ -64,12 +64,12 @@ mobilityData.then(function(data) {
     var covidChartGroup = svg.append("g").attr("transform", "translate("+covidChartXTranslate+", "+margin.top+")");
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
-                        .y(function(d){return y(Number(d.mean));});
+                        .y(function(d){return y(Number(d.number));});
 
-    covidChartGroup.append("path").attr("d", line(data));
+    covidChartGroup.append("path").attr("d", mobilityLine(data));
 
     covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
-    covidChartGroup.append("g").attr("class", "y axis").call(yAxis); */
+    covidChartGroup.append("g").attr("class", "y axis").call(yAxis);
     
 });
 
