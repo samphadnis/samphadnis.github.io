@@ -42,7 +42,7 @@ mobilityData.then(function(data) {
 
     renderData(data, 0);
 
-    addText(100,100,"Low mobility period");
+    addText(400,150,"Low mobility period");
 
     /* var height  = 300;
     var width   = 500;
