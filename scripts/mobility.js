@@ -1,9 +1,9 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-var height  = 300;
+/* var height  = 300;
 var width   = 500;
 
-var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
+var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%"); */
 
 function renderData(data, translateX) {
     
@@ -36,6 +36,11 @@ var mobilityData= d3.csv("data/us_states_data_transposed.csv");
 mobilityData.then(function(data) {
 
     //renderData(data, 0);
+
+    var height  = 300;
+    var width   = 500;
+
+    var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
     
     var max     = d3.max(data, function(d){return Number(d.number);});
     var minDate = d3.min(data, function(d){return parseDate(d.date);});
