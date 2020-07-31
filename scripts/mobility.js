@@ -31,11 +31,18 @@ function renderData(data, translateX) {
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
 }
 
+function addText(x, y, text) {
+
+    svg.append("text").attr("x",x).attr("y",y).text(text);
+}
+
 var mobilityData= d3.csv("data/us_states_data_transposed.csv");
 
 mobilityData.then(function(data) {
 
     renderData(data, 0);
+
+    addText(100,100,"Low mobility period");
 
     /* var height  = 300;
     var width   = 500;
