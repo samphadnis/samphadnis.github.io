@@ -32,7 +32,7 @@ function renderData(data, translateX, tooltipData) {
 
     if ((tooltipData !== undefined) && (tooltipData !== null)) {
 
-        var tooltip = d3.select("body").append("div").style("opacity","0").style("position", "absolute");
+        var tooltip = d3.select("body").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
 
         chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
@@ -45,6 +45,10 @@ function renderData(data, translateX, tooltipData) {
                                                                                             .style("top",d3.event.pageY+"px");
 
                                                                                             tooltip.html(d.tooltip);
+                                                                                    })
+                                                                                    .on("mouseout", function(d){
+
+                                                                                        tooltip.style("opacity","0");
                                                                                     });
     }
 
