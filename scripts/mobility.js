@@ -5,7 +5,7 @@ var width   = 500;
 
 var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
 
-function renderData(data, translateX) {
+function renderData(data, translateX, tooltipData) {
     
     var max     = d3.max(data, function(d){return Number(d.number);});
     var minDate = d3.min(data, function(d){return parseDate(d.date);});
@@ -30,12 +30,12 @@ function renderData(data, translateX) {
     chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
 
-    var mobilityMonthendData = [{date:"3/31/2020",number:"18.56862745", tooltip:""},{date:"4/30/2020",number:"41.1372549", tooltip:""},{date:"5/31/2020",number:"36.43137255", tooltip:""},{date:"6/30/2020",number:"80.78431373", tooltip:""}];
-
-    chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(mobilityMonthendData).enter().append("circle")
+    if ((tooltipData !== undefined) && (tooltipData !== null)) {
+        chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(mobilityMonthendData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
                                                                                     .attr("cy", function(d){return y(Number(d.number));})
                                                                                     .attr("r", "2.5");
+    }
 
 }
 
@@ -53,7 +53,9 @@ var mobilityData= d3.csv("data/us_states_data_transposed.csv");
 
 mobilityData.then(function(data) {
 
-    renderData(data, 0);
+    var mobilityMonthendData = [{date:"3/31/2020",number:"18.56862745", tooltip:"In March, there was a dramatic drop in mobility"},{date:"4/30/2020",number:"41.1372549", tooltip:"Mobility remained low in April"},{date:"5/31/2020",number:"36.43137255", tooltip:"Mobility was higher in May"},{date:"6/30/2020",number:"80.78431373", tooltip:"Mobility continued to rise towards normal levels in June"}];
+    
+    renderData(data, 0, mobilityMonthendData);
 
     addText(135,240,"Low mobility");
     addLine(125,245,245,245);
@@ -118,6 +120,6 @@ var covidData= d3.csv("data/us_covid_cases.csv");
 
 covidData.then(function(data) {
 
-    renderData(data, 600);
+    renderData(data, 600, null);
 
 });
