@@ -52,7 +52,7 @@ mobilityData.then(function(data) {
     addLine(100,35,125,220);
     addText(120,120,"Sharp drop in mobility");
     addLine(300,280,500,200);
-    addText(350,250,"Gradual rise in mobility");
+    addText(400,250,"Gradual rise in mobility");
 
     /* var height  = 300;
     var width   = 500;
