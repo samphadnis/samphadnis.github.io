@@ -48,7 +48,7 @@ mobilityData.then(function(data) {
     renderData(data, 0);
 
     addText(125,240,"Low mobility");
-    addLine(125,245,235,250);
+    addLine(125,250,235,250);
 
     /* var height  = 300;
     var width   = 500;
