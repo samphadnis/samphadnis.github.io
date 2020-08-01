@@ -38,17 +38,21 @@ function renderData(data, translateX, tooltipData) {
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
                                                                                     .attr("cy", function(d){return y(Number(d.number));})
                                                                                     .attr("r", "2.5")
-                                                                                    .on("mouseover", function(d){
+                                                                                    .on("mousemove", function(d){
 
                                                                                         tooltip.style("opacity","1")
                                                                                             .style("left",d3.event.pageX+"px")
                                                                                             .style("top",d3.event.pageY+"px");
 
                                                                                             tooltip.html(d.tooltip);
+
+                                                                                            console.log("mousemove");
                                                                                     })
                                                                                     .on("mouseout", function(d){
 
                                                                                         tooltip.style("opacity","0");
+
+                                                                                        console.log("mouseout");
                                                                                     });
     }
 
