@@ -31,10 +31,21 @@ function renderData(data, translateX, tooltipData) {
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
 
     if ((tooltipData !== undefined) && (tooltipData !== null)) {
+
+        var tooltip = d3.select("body").append("div").style("opacity","0").style("position", "absolute");
+
         chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
                                                                                     .attr("cy", function(d){return y(Number(d.number));})
-                                                                                    .attr("r", "2.5");
+                                                                                    .attr("r", "2.5")
+                                                                                    .on("mouseover", function(d){
+
+                                                                                        tooltip.style("opacity","1")
+                                                                                            .style("left",d3.event.pageX+"px")
+                                                                                            .style("top",d3.event.pageY+"px");
+
+                                                                                            tooltip.html(d.tooltip);
+                                                                                    });
     }
 
 }
