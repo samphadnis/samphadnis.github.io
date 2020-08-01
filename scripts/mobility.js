@@ -32,7 +32,7 @@ function renderData(data, translateX) {
 
     var mobilityMonthendData = [{date:"3/31/2020",number:"18.56862745", tooltip:""},{date:"4/30/2020",number:"41.1372549", tooltip:""},{date:"5/31/2020",number:"36.43137255", tooltip:""},{date:"6/30/2020",number:"80.78431373", tooltip:""}];
 
-    svg.append("g").attr("class", "monthend").selectAll("circle").data(mobilityMonthendData).enter().append("circle")
+    chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(mobilityMonthendData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
                                                                                     .attr("cy", function(d){return y(Number(d.number));})
                                                                                     .attr("r", "2.5");
