@@ -31,7 +31,7 @@ function renderData(data, translateX, tooltipData) {
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
 
     if ((tooltipData !== undefined) && (tooltipData !== null)) {
-        chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(mobilityMonthendData).enter().append("circle")
+        chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
                                                                                     .attr("cy", function(d){return y(Number(d.number));})
                                                                                     .attr("r", "2.5");
