@@ -51,7 +51,7 @@ mobilityData.then(function(data) {
     addLine(125,245,245,245);
     addLine(100,35,125,220);
     addText(120,120,"Sharp drop in mobility");
-    addLine(300,300,400,400);
+    addLine(300,300,450,200);
 
     /* var height  = 300;
     var width   = 500;
