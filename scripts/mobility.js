@@ -50,7 +50,8 @@ mobilityData.then(function(data) {
     addText(135,240,"Low mobility");
     addLine(125,245,245,245);
     addLine(100,35,125,220);
-    addText(120,150,"Sharp drop in mobility due to lockdown");
+    addText(120,120,"Sharp drop in mobility");
+    addLine(300,300,400,400);
 
     /* var height  = 300;
     var width   = 500;
