@@ -29,6 +29,14 @@ function renderData(data, translateX) {
 
     chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
+
+    var mobilityMonthendData = [{date:"3/31/2020",number:"18.56862745", tooltip:""},{date:"4/30/2020",number:"41.1372549", tooltip:""},{date:"5/31/2020",number:"36.43137255", tooltip:""},{date:"6/30/2020",number:"80.78431373", tooltip:""}];
+
+    svg.append("g").attr("class", "monthend").selectAll("circle").data(mobilityMonthendData).enter().append("circle")
+                                                                                    .attr("cx", function(d){return x(parseDate(d.date));})
+                                                                                    .attr("cy", function(d){return y(Number(d.number));})
+                                                                                    .attr("r", "2.5");
+
 }
 
 function addText(x, y, text) {
@@ -94,7 +102,7 @@ mobilityData.then(function(data) {
     covidChartGroup.append("g").attr("class", "y axis").call(yAxis); */
     
 });
-
+/* 
 var mobilityMonthendData= d3.csv("data/us_states_monthend_data_transposed.csv");
 
 mobilityMonthendData.then(function(data) {
@@ -104,7 +112,7 @@ mobilityMonthendData.then(function(data) {
                                                                                     .attr("cy", function(d){return Number(d.number);})
                                                                                     .attr("r", "2.5");
 
-});
+}); */
 
 var covidData= d3.csv("data/us_covid_cases.csv");
 
