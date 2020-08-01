@@ -52,7 +52,7 @@ mobilityData.then(function(data) {
     addLine(100,35,125,220);
     addText(120,120,"Sharp drop in mobility");
     addLine(300,280,500,200);
-    addText(405,250,"Gradual rise in mobility");
+    addText(405,250,"Gradual rise in mobility");    
 
     /* var height  = 300;
     var width   = 500;
@@ -93,6 +93,17 @@ mobilityData.then(function(data) {
     covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     covidChartGroup.append("g").attr("class", "y axis").call(yAxis); */
     
+});
+
+var mobilityMonthendData= d3.csv("data/us_states_monthend_data_transposed.csv");
+
+mobilityMonthendData.then(function(data) {
+
+    svg.append("g").attr("class", "monthend").selectAll("circle").data(data).enter().append("circle")
+                                                                                    .attr("cx", function(d){return parseDate(d.date);})
+                                                                                    .attr("cy", function(d){return Number(d.number);})
+                                                                                    .attr("r", "2.5");
+
 });
 
 var covidData= d3.csv("data/us_covid_cases.csv");
