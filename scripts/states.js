@@ -115,12 +115,12 @@ function renderCovidData(data, translateX, tooltipData) {
 
 }
 
-function addText(x, y, text) {
+function addStateText(x, y, text) {
 
     stateSvg.append("text").attr("x",x).attr("y",y).text(text);
 }
 
-function addLine(x1, y1, x2, y2) {
+function addStateLine(x1, y1, x2, y2) {
 
     stateSvg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2).attr("stroke","blue").attr("stroke-width","1");
 }
