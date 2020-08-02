@@ -3,7 +3,7 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 var height  = 300;
 var width   = 500;
 
-var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
+var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "data");
 
 function renderData(data, translateX, tooltipData) {
     
@@ -81,64 +81,23 @@ mobilityData.then(function(data) {
     addLine(100,35,125,220);
     addText(120,120,"Sharp drop in mobility");
     addLine(300,280,500,200);
-    addText(405,250,"Gradual rise in mobility");    
-
-    /* var height  = 300;
-    var width   = 500;
-
-    var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
-    
-    var max     = d3.max(data, function(d){return Number(d.number);});
-    var minDate = d3.min(data, function(d){return parseDate(d.date);});
-    var maxDate = d3.max(data, function(d){return parseDate(d.date);});
-
-    var y = d3.scaleLinear().domain([0,max]).range([height,0]);
-    var x = d3.scaleTime().domain([minDate,maxDate]).range([0,width]);
-
-    var yAxis = d3.axisLeft(y);
-    var xAxis =  d3.axisBottom(x);
-
-    var margin = {left:50,right:50, top:40, bottom:0};
-
-    var mobilityChartGroup = svg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
-
-    var mobilityLine = d3.line().x(function(d){return x(parseDate(d.date));})
-                        .y(function(d){return y(Number(d.number));})
-                        .curve(d3.curveCardinal);
-
-    mobilityChartGroup.append("path").attr("d", mobilityLine(data));
-
-    mobilityChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
-    mobilityChartGroup.append("g").attr("class", "y axis").call(yAxis);
-
-    covidChartXTranslate    = margin.left + 500;
-    var covidChartGroup     = svg.append("g").attr("transform", "translate("+covidChartXTranslate+", "+margin.top+")");
-
-    var line = d3.line().x(function(d){return x(parseDate(d.date));})
-                        .y(function(d){return y(Number(d.number));});
-
-    covidChartGroup.append("path").attr("d", mobilityLine(data));
-
-    covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
-    covidChartGroup.append("g").attr("class", "y axis").call(yAxis); */
+    addText(405,250,"Gradual rise in mobility");
     
 });
-/* 
-var mobilityMonthendData= d3.csv("data/us_states_monthend_data_transposed.csv");
-
-mobilityMonthendData.then(function(data) {
-
-    svg.append("g").attr("class", "monthend").selectAll("circle").data(data).enter().append("circle")
-                                                                                    .attr("cx", function(d){return parseDate(d.date);})
-                                                                                    .attr("cy", function(d){return Number(d.number);})
-                                                                                    .attr("r", "2.5");
-
-}); */
 
 var covidData= d3.csv("data/us_covid_cases.csv");
 
 covidData.then(function(data) {
 
-    renderData(data, 600, null);
+    var  covidMonthendData = [{date:"3/31/2020",number:"188461", tooltip:"In March, COVID cases increased"},{date:"4/30/2020",number:"1075637", tooltip:"In April, the rate of increase was steady"},{date:"5/31/2020",number:"1799036", tooltip:"In May, rate of increase remained steady"},{date:"6/30/2020",number:"2653319", tooltip:"In June, rate of increase remained steady, but increased sharply in July"}];
+    renderData(data, 600, covidMonthendData);
 
 });
+
+function loadStateData() {
+
+    d3.select("data").html="";
+
+    svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "data");
+
+}
