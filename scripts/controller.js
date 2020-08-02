@@ -11,6 +11,7 @@ function ShowHideDiv() {
     if(checked_summary != null) {
 
         document.getElementById('states').style.visibility="hidden";
+        document.getElementById('summary').style.visibility="visible";
 
         console.log("checked_summary not null");
     } else if (document.querySelector('input[id = "navigate-states"]:checked') != null){
