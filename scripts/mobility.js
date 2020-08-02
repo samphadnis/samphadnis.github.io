@@ -37,23 +37,23 @@ function renderData(data, translateX, tooltipData) {
         chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
                                                                                     .attr("cy", function(d){return y(Number(d.number));})
-                                                                                    .attr("r", "2.5")
-                                                                                    .on("mouseenter", function(d){
+                                                                                    .attr("r", "5")
+                                                                                    .on("mouseover", function(d){
 
-                                                                                        tooltip.style("opacity","1")
+                                                                                        tooltip.transition(200).style("opacity","1")
                                                                                             .style("left",d3.event.pageX+"px")
                                                                                             .style("top",d3.event.pageY+"px");
 
                                                                                             tooltip.html(d.tooltip);
 
                                                                                             console.log("mousemove");
-                                                                                    });
-                                                                                    /* .on("mouseleave", function(d){
+                                                                                    })
+                                                                                    .on("mouseout", function(d){
 
-                                                                                        tooltip.style("opacity","0");
+                                                                                        tooltip.transition(200).style("opacity","0");
 
                                                                                         console.log("mouseout");
-                                                                                    }); */
+                                                                                    });
     }
 
 }
