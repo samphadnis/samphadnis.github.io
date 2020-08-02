@@ -47,13 +47,13 @@ function renderData(data, translateX, tooltipData) {
                                                                                             tooltip.html(d.tooltip);
 
                                                                                             console.log("mousemove");
-                                                                                    })
-                                                                                    .on("mouseleave", function(d){
+                                                                                    });
+                                                                                    /* .on("mouseleave", function(d){
 
                                                                                         tooltip.style("opacity","0");
 
                                                                                         console.log("mouseout");
-                                                                                    });
+                                                                                    }); */
     }
 
 }
