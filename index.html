@@ -26,12 +26,25 @@
 
         </div>
 
-        <div id="chart">
+        <div id="summary" style="visibility:visible;">
             <script type="text/javascript" src="scripts/mobility.js"></script>
         </div>
 
-        <div id="navigate">
+        <div id="states" style="visibility:hidden;">
+            <script type="text/javascript" src="scripts/states.js"></script>
 
+            <label for="states">Choose a state:</label>
+                <select name="state" id="state">
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                </select>
+        </div>
+
+        <div id="navigate">
+            <input type="radio" id="navigate-summary" name="summary" value="summary" checked onclick="ShowHideDiv()">
+            <label for="navigate-summary">All US</label><br>
+            <input type="radio" id="navigate-states" name="states" value="states" onclick="ShowHideDiv()">
+            <label for="navigate-states">State Wise</label><br>
         </div>
     </body>
 
