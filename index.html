@@ -26,6 +26,13 @@
 
         </div>
 
+        <div id="navigate">
+            <input type="radio" id="navigate-summary" name="summary" value="summary" checked onclick="ShowHideDiv()">
+            <label for="navigate-summary">All US</label><br>
+            <input type="radio" id="navigate-states" name="states" value="states" onclick="ShowHideDiv()">
+            <label for="navigate-states">State Wise</label><br>
+        </div>
+
         <div id="summary" style="visibility:visible;">
             <script type="text/javascript" src="scripts/mobility.js"></script>
         </div>
@@ -38,13 +45,6 @@
                     <option value="Alabama">Alabama</option>
                     <option value="Alaska">Alaska</option>
                 </select>
-        </div>
-
-        <div id="navigate">
-            <input type="radio" id="navigate-summary" name="summary" value="summary" checked onclick="ShowHideDiv()">
-            <label for="navigate-summary">All US</label><br>
-            <input type="radio" id="navigate-states" name="states" value="states" onclick="ShowHideDiv()">
-            <label for="navigate-states">State Wise</label><br>
         </div>
     </body>
 
