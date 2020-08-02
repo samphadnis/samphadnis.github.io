@@ -131,7 +131,7 @@ function loadStateData() {
 
     console.log("selectedState:"+selectedState);
 
-    d3.select("#states").html="";
+    d3.select("#state-data").html="";
     
     var stateMobilityData= d3.csv("data/"+selectedState+".csv");
 
