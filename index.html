@@ -31,6 +31,8 @@
             <label for="navigate-summary">All US</label><br>
             <input type="radio" id="navigate-states" name="viewchooser" value="navigate-states" onclick="ShowHideDiv()">
             <label for="navigate-states">State Wise</label><br>
+            <input type="radio" id="navigate-states" name="viewchooser" value="navigate-comparison" onclick="ShowHideDiv()">
+            <label for="navigate-comparison">Top 10 States</label><br>
         </div>
 
         <div id="summary" style="display:block;height: 100%;">
@@ -40,7 +42,7 @@
         <div id="states" style="display:none;height: 100%;">        
             <label for="states">Choose a state:</label>
                 <select name="state" id="state-chooser" onchange="loadStateData()">
-                    <option value="">"     "</option>
+                    <option value="--">"--"</option>
                     <option value="Alabama">Alabama</option>
                     <option value="Alaska">Alaska</option>
                     <option value="Arizona">Arizona</option>
@@ -88,13 +90,17 @@
                     <option value="Vermont">Vermont</option>
                     <option value="Virginia">Virginia</option>
                     <option value="Washington">Washington</option>
-                    <option value="Washington, D.C.">Washington, D.C.</option>
+                    <option value="Washington DC">Washington, D.C.</option>
                     <option value="West Virginia">West Virginia</option>
                     <option value="Wisconsin">Wisconsin</option>
                     <option value="Wyoming">Wyoming</option>
                 </select>
 
                 <script type="text/javascript" src="scripts/states.js"></script>
+        </div>
+
+        <div id="comparison" style="display:none;height: 100%;">
+            <script type="text/javascript" src="scripts/comparison.js"></script>
         </div>
     </body>
 
