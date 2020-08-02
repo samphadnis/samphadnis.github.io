@@ -34,7 +34,7 @@ function renderMobilityData(data, translateX, tooltipData) {
 
     if ((tooltipData !== undefined) && (tooltipData !== null)) {
 
-        var tooltip = d3.select("body").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
+        var tooltip = d3.select("#states").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
 
         chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
@@ -130,6 +130,8 @@ function loadStateData() {
     var selectedState = document.getElementById("state-chooser").value;
 
     console.log("selectedState:"+selectedState);
+
+    d3.select("#states").html="";
     
     var stateMobilityData= d3.csv("data/"+selectedState+".csv");
 

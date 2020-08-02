@@ -34,7 +34,7 @@ function renderData(data, translateX, tooltipData) {
 
     if ((tooltipData !== undefined) && (tooltipData !== null)) {
 
-        var tooltip = d3.select("body").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
+        var tooltip = d3.select("#summary").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
 
         chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
