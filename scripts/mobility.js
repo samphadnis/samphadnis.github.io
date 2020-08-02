@@ -38,7 +38,7 @@ function renderData(data, translateX, tooltipData) {
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
                                                                                     .attr("cy", function(d){return y(Number(d.number));})
                                                                                     .attr("r", "2.5")
-                                                                                    .on("mousemove", function(d){
+                                                                                    .on("mouseenter", function(d){
 
                                                                                         tooltip.style("opacity","1")
                                                                                             .style("left",d3.event.pageX+"px")
@@ -48,7 +48,7 @@ function renderData(data, translateX, tooltipData) {
 
                                                                                             console.log("mousemove");
                                                                                     })
-                                                                                    .on("mouseout", function(d){
+                                                                                    .on("mouseleave", function(d){
 
                                                                                         tooltip.style("opacity","0");
 
