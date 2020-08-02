@@ -7,6 +7,8 @@ var svg = d3.select("#summary").append("svg").attr("height", "100%").attr("width
 
 function renderData(data, translateX, tooltipData) {
     
+    console.log("All US renderMobilityData");
+    
     var max     = d3.max(data, function(d){return Number(d.number);});
     var minDate = d3.min(data, function(d){return parseDate(d.date);});
     var maxDate = d3.max(data, function(d){return parseDate(d.date);});

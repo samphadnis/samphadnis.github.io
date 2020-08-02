@@ -131,9 +131,9 @@ function loadStateData() {
 
     console.log("selectedState:"+selectedState);
     
-    var mobilityData= d3.csv("data/"+selectedState+".csv");
+    var stateMobilityData= d3.csv("data/"+selectedState+".csv");
 
-    mobilityData.then(function(data) {        
+    stateMobilityData.then(function(data) {        
 
         parseDate = d3.timeParse("%m/%d/%Y");
         
@@ -141,9 +141,9 @@ function loadStateData() {
         
     });
 
-    var covidData= d3.csv("data/"+selectedState+"-covid.csv");
+    var stateCovidData= d3.csv("data/"+selectedState+"-covid.csv");
 
-    covidData.then(function(data) {
+    stateCovidData.then(function(data) {
         
         parseDate = d3.timeParse("%Y%m%d");
         
