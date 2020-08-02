@@ -4,7 +4,7 @@ function ShowHideDiv() {
     
     var option = document.getElementById('navigate-summary');
 
-    var checked_summary = document.querySelector('input[name = "summary"]:checked');
+    var checked_summary = document.querySelector('input[id = "navigate-summary"]:checked');
 
     console.log("checked_summary");
 
@@ -13,7 +13,7 @@ function ShowHideDiv() {
         document.getElementById('states').style.visibility="hidden";
 
         console.log("checked_summary not null");
-    } else if (document.querySelector('input[name = "states"]:checked') != null){
+    } else if (document.querySelector('input[id = "navigate-states"]:checked') != null){
         
         document.getElementById('summary').style.visibility="hidden";
         document.getElementById('states').style.visibility="visible";
