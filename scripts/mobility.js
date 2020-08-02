@@ -3,7 +3,7 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 var height  = 300;
 var width   = 500;
 
-var svg = d3.select("#summary").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "data");
+var svg = d3.select("#summary").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "summary-data");
 
 function renderData(data, translateX, tooltipData) {
     

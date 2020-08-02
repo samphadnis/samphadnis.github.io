@@ -3,7 +3,7 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 var height  = 300;
 var width   = 500;
 
-var stateSvg = d3.select("#states").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "data");
+var stateSvg = d3.select("#states").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "state-data");
 
 function renderMobilityData(data, translateX, tooltipData) {
 
@@ -89,7 +89,7 @@ function renderCovidData(data, translateX, tooltipData) {
 
     if ((tooltipData !== undefined) && (tooltipData !== null)) {
 
-        var tooltip = d3.select("body").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
+        var tooltip = d3.select("#states").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
 
         chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
                                                                                     .attr("cx", function(d){return x(parseDate(d.date));})
