@@ -3,7 +3,7 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 var height  = 300;
 var width   = 500;
 
-var svg = d3.select("#states").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "data");
+var stateSvg = d3.select("#states").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "data");
 
 function renderMobilityData(data, translateX, tooltipData) {
 
@@ -21,7 +21,7 @@ function renderMobilityData(data, translateX, tooltipData) {
 
     var margin = {left:50+translateX,right:50, top:40, bottom:0};
 
-    var chartGroup = svg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+    var chartGroup = stateSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.number));})
@@ -76,7 +76,7 @@ function renderCovidData(data, translateX, tooltipData) {
 
     var margin = {left:50+translateX,right:50, top:40, bottom:0};
 
-    var chartGroup = svg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+    var chartGroup = stateSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.total));})
@@ -117,12 +117,12 @@ function renderCovidData(data, translateX, tooltipData) {
 
 function addText(x, y, text) {
 
-    svg.append("text").attr("x",x).attr("y",y).text(text);
+    stateSvg.append("text").attr("x",x).attr("y",y).text(text);
 }
 
 function addLine(x1, y1, x2, y2) {
 
-    svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2).attr("stroke","blue").attr("stroke-width","1");
+    stateSvg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2).attr("stroke","blue").attr("stroke-width","1");
 }
 
 function loadStateData() {    
