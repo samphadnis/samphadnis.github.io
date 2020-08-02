@@ -33,15 +33,15 @@
             <label for="navigate-states">State Wise</label><br>
         </div>
 
-        <div id="summary" style="display:block;">
+        <div id="summary" style="display:block;height: 100%;">
             <script type="text/javascript" src="scripts/mobility.js"></script>
         </div>
 
-        <div id="states" style="display:none;">
+        <div id="states" style="display:none;height: 100%;">
             <script type="text/javascript" src="scripts/states.js"></script>
 
             <label for="states">Choose a state:</label>
-                <select name="state" id="state">
+                <select name="state" id="state-chooser" onchange="loadStateData()">
                     <option value="Alabama">Alabama</option>
                     <option value="Alaska">Alaska</option>
                 </select>

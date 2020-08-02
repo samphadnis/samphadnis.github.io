@@ -93,11 +93,3 @@ covidData.then(function(data) {
     renderData(data, 600, covidMonthendData);
 
 });
-
-function loadStateData() {
-
-    d3.select("data").html="";
-
-    svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "data");
-
-}
