@@ -5,15 +5,6 @@ var width   = 500;
 
 var comparisonSvg = d3.select("#comparison").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "comparison-data");
 
-function renderStateComparisonData(data, svgGroup) {
-
-    var line = d3.line().x(function(d){return x(parseDate(d.date));})
-                        .y(function(d){return y(Number(d.number));})
-                        .curve(d3.curveCardinal);
-
-    svgGroup.append("path").attr("d", line(data)).style("stroke",color);
-}
-
 function renderComparisonData(translateX) {
 
     console.log("renderComparisonData");
@@ -51,7 +42,7 @@ function renderComparisonData(translateX) {
                         .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
 
-            chartGroup.append("path").attr("d", line(data)).style("stroke",colors[i]).attr("stroke", colors[i]);
+            chartGroup.append("path").attr("d", line(data)).attr("stroke", colors[i]);
             
         });
         
@@ -96,7 +87,7 @@ function renderComparisonCovidData(translateX) {
                         .y(function(d){return y(Number(d.total));})
                         .curve(d3.curveCardinal);
 
-            covidChartGroup.append("path").attr("d", line(data)).style("stroke",colors[i]).attr("stroke", colors[i]);
+            covidChartGroup.append("path").attr("d", line(data)).attr("stroke", colors[i]);
         });
 
     }
