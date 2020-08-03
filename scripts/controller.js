@@ -28,6 +28,8 @@ function ShowHideDiv() {
         document.getElementById('states').style.display="none";
         document.getElementById('comparison').style.display="block";
 
+        loadComparisonData();
+
         console.log("checked_summary null");
     }
 
