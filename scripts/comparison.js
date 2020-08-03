@@ -141,7 +141,7 @@ function addComparisonLine(x1, y1, x2, y2) {
 
 function addComparisonText(x, y, text, color) {
 
-    stateSvg.append("text").attr("x",x).attr("y",y).text(text).style('fill', color);
+    comparisonSvg.append("text").attr("x",x).attr("y",y).text(text).style('fill', color);
 }
 
 function loadComparisonData() {
@@ -152,7 +152,7 @@ function loadComparisonData() {
             
     renderComparisonData(0);
 
-    addComparisonText(100, 800, "California", "red");
+    addComparisonText(100, 10, "California", "red");
 
     //parseDate = d3.timeParse("%Y%m%d");
 
