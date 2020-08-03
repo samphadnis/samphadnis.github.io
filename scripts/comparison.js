@@ -146,7 +146,7 @@ function loadComparisonData() {
             
         });
 
-        var stateComparisonCovidData= d3.csv("data/"+selectedState+"-covid.csv");
+        var stateComparisonCovidData= d3.csv("data/"+comparisonState+"-covid.csv");
 
         stateComparisonCovidData.then(function(data) {
             
