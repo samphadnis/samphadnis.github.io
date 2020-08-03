@@ -27,7 +27,7 @@ function renderData(data, translateX, tooltipData) {
                         .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
 
-    chartGroup.append("path").attr("d", line(data));
+    chartGroup.append("path").attr("d", line(data)).attr("stroke", "green");
 
     chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
