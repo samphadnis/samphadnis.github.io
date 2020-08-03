@@ -25,10 +25,9 @@ function renderComparisonData(data, translateX, tooltipData, color) {
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.number));})
-                        .curve(d3.curveCardinal)
-                        .attr("stroke",color);
+                        .curve(d3.curveCardinal);
 
-    chartGroup.append("path").attr("d", line(data));
+    chartGroup.append("path").attr("d", line(data)).attr("stroke",color);
 
     chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
@@ -81,10 +80,9 @@ function renderComparisonCovidData(data, translateX, tooltipData, color) {
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.total));})
-                        .curve(d3.curveCardinal)
-                        .attr("stroke",color);
+                        .curve(d3.curveCardinal);
 
-    chartGroup.append("path").attr("d", line(data));
+    chartGroup.append("path").attr("d", line(data)).attr("stroke",color);
 
     chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
