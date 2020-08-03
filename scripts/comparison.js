@@ -3,6 +3,7 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 var height  = 300;
 var width   = 500;
 var color = "green";
+var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
 
 var comparisonSvg = d3.select("#comparison").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "comparison-data");
 
@@ -22,8 +23,7 @@ function renderComparisonData(translateX) {
 
     var margin = {left:50+translateX,right:50, top:40, bottom:0};
 
-    var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];
-    var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
+    var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];   
     
     var chartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
@@ -48,6 +48,7 @@ function renderComparisonData(translateX) {
                         .curve(d3.curveCardinal);
 
                         console.log("color:" + color);
+                        console.log("color i:" + colors[i]);
 
             chartGroup.append("path").attr("d", line(data)).attr("stroke", color);
             
@@ -82,7 +83,7 @@ function renderComparisonCovidData(translateX) {
 
     for (j=0; j < top5States.length; j++) {
 
-        var comparisonState = top5States[i];
+        var comparisonState = top5States[j];
 
         console.log("comparisonCovidState:" + comparisonState);
 
@@ -94,7 +95,7 @@ function renderComparisonCovidData(translateX) {
                         .y(function(d){return y(Number(d.total));})
                         .curve(d3.curveCardinal);
 
-            covidChartGroup.append("path").attr("d", line(data)).attr("stroke", colors[i]);
+            covidChartGroup.append("path").attr("d", line(data)).attr("stroke", colors[j]);
         });
 
     }
