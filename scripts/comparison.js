@@ -47,7 +47,27 @@ function renderComparisonData(translateX) {
 
             var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.number));})
-                        .curve(d3.curveCardinal);
+                        .curve(d3.curveLinear);
+
+                        if(data[0].number=="60") {
+
+                            color = "red";
+                        } else if (data[0].number=="71") {
+
+                            color = "orange";
+                        } else if (data[0].number=="72") {
+
+                            color = "grey";
+                        }  else if (data[0].number=="51") {
+
+                            color = "purple";
+                        } else if (data[0].number=="61") {
+
+                            color = "blue";
+                        }  else if (data[0].number=="70") {
+
+                            color = "green";
+                        }
 
                         console.log("color:" + color);
                         console.log("i:" + i);
