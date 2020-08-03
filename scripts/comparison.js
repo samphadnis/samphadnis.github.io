@@ -82,7 +82,7 @@ function renderComparisonCovidData(data, translateX, tooltipData, color) {
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.total));})
                         .curve(d3.curveCardinal)
-                        .stroke(color);
+                        .attr("stroke",color);
 
     chartGroup.append("path").attr("d", line(data));
 
