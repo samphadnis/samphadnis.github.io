@@ -48,10 +48,11 @@ function renderComparisonData(translateX) {
             var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
+
+            chartGroup.append("path").attr("d", line(data)).style("stroke",colors[i]);
             
         });
-
-        chartGroup.append("path").attr("d", line(data)).style("stroke",colors[i]);
+        
     }
 
     chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
