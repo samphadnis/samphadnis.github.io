@@ -91,8 +91,8 @@ function renderComparisonCovidData(translateX) {
     var minDate = parseDate("20200301");//d3.min(data, function(d){return parseDate(d.date);});
     var maxDate = parseDate("20200801");//d3.max(data, function(d){return parseDate(d.date);});
 
-    var y = d3.scaleLinear().domain([0,max]).range([height,0]);
-    var x = d3.scaleTime().domain([minDate,maxDate]).range([0,width]);
+    var y = d3.scaleLinear().domain([0,max]).range([cmpheight,0]);
+    var x = d3.scaleTime().domain([minDate,maxDate]).range([0,cmpwidth]);
 
     var yAxis = d3.axisLeft(y);
     var xAxis =  d3.axisBottom(x);
@@ -122,7 +122,7 @@ function renderComparisonCovidData(translateX) {
 
     }
 
-    covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
+    covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+cmpheight+")").call(xAxis);
     covidChartGroup.append("g").attr("class", "y axis").call(yAxis);
 
 }
