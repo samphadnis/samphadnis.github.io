@@ -4,6 +4,7 @@ var cmpheight  = 500;
 var cmpwidth   = 700;
 var color   = "green";
 var colors  = ["red", "orange", "grey", "purple", "blue", "green"];
+var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];   
 
 var comparisonSvg = d3.select("#comparison").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "comparison-data");
 
@@ -152,7 +153,12 @@ function loadComparisonData() {
             
     renderComparisonData(0);
 
-    addComparisonText(100, 40, "California", "red");
+    addComparisonText(100, 60, "California:Red", "red");
+    addComparisonText(105, 60, "Florida:Orange", "orange");
+    addComparisonText(110, 60, "Texas:Grey", "grey");
+    addComparisonText(115, 60, "New York:Purple", "purple");
+    addComparisonText(120, 60, "New Jersey:Blue", "blue");
+    addComparisonText(125, 60, "Illinois:Green", "green");
 
     //parseDate = d3.timeParse("%Y%m%d");
 
