@@ -1,7 +1,7 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-var height  = 600;
-var width   = 1000;
+var cmpheight  = 600;
+var cmpwidth   = 1000;
 var color   = "green";
 var colors  = ["red", "orange", "grey", "purple", "blue", "green"];
 
@@ -15,8 +15,8 @@ function renderComparisonData(translateX) {
     var minDate = parseDate("03/01/2020");//d3.min(data, function(d){return parseDate(d.date);});
     var maxDate = parseDate("08/01/2020");//d3.max(data, function(d){return parseDate(d.date);});
 
-    var y = d3.scaleLinear().domain([0,max]).range([height,0]);
-    var x = d3.scaleTime().domain([minDate,maxDate]).range([0,width]);
+    var y = d3.scaleLinear().domain([0,max]).range([cmpheight,0]);
+    var x = d3.scaleTime().domain([minDate,maxDate]).range([0,cmpwidth]);
 
     var yAxis = d3.axisLeft(y);
     var xAxis =  d3.axisBottom(x);
