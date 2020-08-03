@@ -2,6 +2,7 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 
 var height  = 300;
 var width   = 500;
+var color = "green";
 
 var comparisonSvg = d3.select("#comparison").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "comparison-data");
 
@@ -33,6 +34,8 @@ function renderComparisonData(translateX) {
         console.log("comparisonState:" + comparisonState);
 
         var stateComparisonData= d3.csv("data/"+comparisonState+".csv");
+
+        color = colors[i];
         
         stateComparisonData.then(function(data) {        
 
@@ -42,9 +45,9 @@ function renderComparisonData(translateX) {
                         .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
 
-                        console.log("color:" + colors[i]);
+                        console.log("color:" + color);
 
-            chartGroup.append("path").attr("d", line(data)).attr("stroke", "green");
+            chartGroup.append("path").attr("d", line(data)).attr("stroke", color);
             
         });
         
@@ -94,8 +97,8 @@ function renderComparisonCovidData(translateX) {
 
     }
 
-    chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
-    chartGroup.append("g").attr("class", "y axis").call(yAxis);
+    covidChartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
+    covidChartGroup.append("g").attr("class", "y axis").call(yAxis);
 
 }
 
