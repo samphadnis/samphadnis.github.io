@@ -35,6 +35,8 @@ function renderComparisonData(translateX) {
 
         var stateComparisonData= d3.csv("data/"+comparisonState+".csv");
 
+        console.log("i:" + i);
+
         color = colors[i];
         
         stateComparisonData.then(function(data) {        
@@ -78,7 +80,7 @@ function renderComparisonCovidData(translateX) {
     
     var covidChartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
-    for (i=0; i < top5States.length; i++) {
+    for (j=0; j < top5States.length; j++) {
 
         var comparisonState = top5States[i];
 
