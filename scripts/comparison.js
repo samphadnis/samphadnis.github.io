@@ -41,7 +41,7 @@ function renderComparisonData(translateX) {
 
         console.log("color out:" + color);
         
-        stateComparisonData.then(function(data, color) {       
+        stateComparisonData.then(function(data) {
 
             parseDate = d3.timeParse("%m/%d/%Y");
 
