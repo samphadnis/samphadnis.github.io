@@ -152,7 +152,7 @@ function loadComparisonData() {
             
     renderComparisonData(0);
 
-    addComparisonText(100, 10, "California", "red");
+    addComparisonText(100, 40, "California", "red");
 
     //parseDate = d3.timeParse("%Y%m%d");
 
