@@ -5,68 +5,22 @@ var width   = 500;
 
 var comparisonSvg = d3.select("#comparison").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "comparison-data");
 
-function renderComparisonData(data, translateX, tooltipData, color) {
-
-    console.log("renderComparisonData");
-    
-    var max     = d3.max(data, function(d){return Number(d.number);});
-    var minDate = d3.min(data, function(d){return parseDate(d.date);});
-    var maxDate = d3.max(data, function(d){return parseDate(d.date);});
-
-    var y = d3.scaleLinear().domain([0,max]).range([height,0]);
-    var x = d3.scaleTime().domain([minDate,maxDate]).range([0,width]);
-
-    var yAxis = d3.axisLeft(y);
-    var xAxis =  d3.axisBottom(x);
-
-    var margin = {left:50+translateX,right:50, top:40, bottom:0};
-
-    var chartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+function renderStateComparisonData(data, svgGroup) {
 
     var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
 
-    chartGroup.append("path").attr("d", line(data)).attr("stroke",color);
-
-    chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
-    chartGroup.append("g").attr("class", "y axis").call(yAxis);
-
-    if ((tooltipData !== undefined) && (tooltipData !== null)) {
-
-        var tooltip = d3.select("#states").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
-
-        chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
-                                                                                    .attr("cx", function(d){return x(parseDate(d.date));})
-                                                                                    .attr("cy", function(d){return y(Number(d.number));})
-                                                                                    .attr("r", "5")
-                                                                                    .on("mouseover", function(d){
-
-                                                                                        tooltip.transition(200).style("opacity","1")
-                                                                                            .style("left",d3.event.pageX+"px")
-                                                                                            .style("top",d3.event.pageY+"px");
-
-                                                                                            tooltip.html(d.tooltip);
-
-                                                                                            console.log("mousemove");
-                                                                                    })
-                                                                                    .on("mouseout", function(d){
-
-                                                                                        tooltip.transition(200).style("opacity","0");
-
-                                                                                        console.log("mouseout");
-                                                                                    });
-    }
-
+    svgGroup.append("path").attr("d", line(data)).style("stroke",color);
 }
 
-function renderComparisonCovidData(data, translateX, tooltipData, color) {
+function renderComparisonData(translateX) {
 
-    console.log("renderComparisonCovidData");
+    console.log("renderComparisonData");
     
-    var max     = d3.max(data, function(d){return Number(d.total);});
-    var minDate = d3.min(data, function(d){return parseDate(d.date);});
-    var maxDate = d3.max(data, function(d){return parseDate(d.date);});
+    var max     = 130;//d3.max(data, function(d){return Number(d.number);});
+    var minDate = parseDate("03/01/2020");//d3.min(data, function(d){return parseDate(d.date);});
+    var maxDate = parseDate("08/01/2020");//d3.max(data, function(d){return parseDate(d.date);});
 
     var y = d3.scaleLinear().domain([0,max]).range([height,0]);
     var x = d3.scaleTime().domain([minDate,maxDate]).range([0,width]);
@@ -76,42 +30,74 @@ function renderComparisonCovidData(data, translateX, tooltipData, color) {
 
     var margin = {left:50+translateX,right:50, top:40, bottom:0};
 
-    var chartGroup = stateSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+    var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];
+    var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
+    
+    var chartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
-    var line = d3.line().x(function(d){return x(parseDate(d.date));})
-                        .y(function(d){return y(Number(d.total));})
+    for (i=0; i < top5States.length; i++) {
+
+        var comparisonState = top5States[i];
+
+        var stateComparisonData= d3.csv("data/"+comparisonState+".csv");
+        
+        stateComparisonData.then(function(data) {        
+
+            parseDate = d3.timeParse("%m/%d/%Y");
+
+            var line = d3.line().x(function(d){return x(parseDate(d.date));})
+                        .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
+            
+        });
 
-    chartGroup.append("path").attr("d", line(data)).attr("stroke",color);
+        chartGroup.append("path").attr("d", line(data)).style("stroke",colors[i]);
+    }
 
     chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
+}
 
-    if ((tooltipData !== undefined) && (tooltipData !== null)) {
+function renderComparisonCovidData(translateX) {
 
-        var tooltip = d3.select("#states").append("div").style("opacity","0").style("position", "absolute").style("color","blue").style("background-color","white");
+    console.log("renderComparisonCovidData");
+    
+    var max     = 7886587;//d3.max(data, function(d){return Number(d.total);});
+    var minDate = parseDate("20200301");//d3.min(data, function(d){return parseDate(d.date);});
+    var maxDate = parseDate("20200801");//d3.max(data, function(d){return parseDate(d.date);});
 
-        chartGroup.append("g").attr("class", "monthend").selectAll("circle").data(tooltipData).enter().append("circle")
-                                                                                    .attr("cx", function(d){return x(parseDate(d.date));})
-                                                                                    .attr("cy", function(d){return y(Number(d.total));})
-                                                                                    .attr("r", "5")
-                                                                                    .on("mouseover", function(d){
+    var y = d3.scaleLinear().domain([0,max]).range([height,0]);
+    var x = d3.scaleTime().domain([minDate,maxDate]).range([0,width]);
 
-                                                                                        tooltip.transition(200).style("opacity","1")
-                                                                                            .style("left",d3.event.pageX+"px")
-                                                                                            .style("top",d3.event.pageY+"px");
+    var yAxis = d3.axisLeft(y);
+    var xAxis =  d3.axisBottom(x);
 
-                                                                                            tooltip.html(d.tooltip);
+    var margin = {left:50+translateX,right:50, top:40, bottom:0};
 
-                                                                                            console.log("mousemove");
-                                                                                    })
-                                                                                    .on("mouseout", function(d){
+    var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];
+    var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
+    
+    var chartGroup = stateSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
-                                                                                        tooltip.transition(200).style("opacity","0");
+    for (i=0; i < top5States.length; i++) {
 
-                                                                                        console.log("mouseout");
-                                                                                    });
+        var comparisonState = top5States[i];
+
+        var stateComparisonCovidData= d3.csv("data/"+comparisonState+"-covid.csv");
+
+        stateComparisonCovidData.then(function(data) {
+
+            var line = d3.line().x(function(d){return x(parseDate(d.date));})
+                        .y(function(d){return y(Number(d.total));})
+                        .curve(d3.curveCardinal);
+
+            chartGroup.append("path").attr("d", line(data)).attr("stroke",colors[i]);
+        });
+
     }
+
+    chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
+    chartGroup.append("g").attr("class", "y axis").call(yAxis);
 
 }
 
@@ -129,33 +115,12 @@ function loadComparisonData() {
 
     console.log("loadComparisonData");
 
-    var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];
-    var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
-
-    for (i=0; i < top5States.length; i++) {
-
-        var comparisonState = top5States[i];
-
-        var stateComparisonData= d3.csv("data/"+comparisonState+".csv");
-
-        stateComparisonData.then(function(data) {        
-
-            parseDate = d3.timeParse("%m/%d/%Y");
+    parseDate = d3.timeParse("%m/%d/%Y");
             
-            renderComparisonData(data, 0, null, colors[i]);
-            
-        });
+    renderComparisonData(0);
 
-        var stateComparisonCovidData= d3.csv("data/"+comparisonState+"-covid.csv");
+    parseDate = d3.timeParse("%Y%m%d");
 
-        stateComparisonCovidData.then(function(data) {
-            
-            parseDate = d3.timeParse("%Y%m%d");
-            
-            renderComparisonCovidData(data, 600, null, colors[i]);
-
-        });
-
-    }
+    renderComparisonCovidData(600);
 
 }
