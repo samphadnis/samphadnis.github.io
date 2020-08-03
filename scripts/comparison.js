@@ -39,6 +39,8 @@ function renderComparisonData(translateX) {
 
         var comparisonState = top5States[i];
 
+        console.log("comparisonState:" + comparisonState);
+
         var stateComparisonData= d3.csv("data/"+comparisonState+".csv");
         
         stateComparisonData.then(function(data) {        
@@ -78,11 +80,13 @@ function renderComparisonCovidData(translateX) {
     var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];
     var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
     
-    var chartGroup = stateSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+    var chartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
     for (i=0; i < top5States.length; i++) {
 
         var comparisonState = top5States[i];
+
+        console.log("comparisonCovidState:" + comparisonState);
 
         var stateComparisonCovidData= d3.csv("data/"+comparisonState+"-covid.csv");
 
