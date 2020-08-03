@@ -80,7 +80,7 @@ function renderComparisonCovidData(translateX) {
     var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];
     var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
     
-    var chartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
+    var covidChartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
     for (i=0; i < top5States.length; i++) {
 
@@ -96,7 +96,7 @@ function renderComparisonCovidData(translateX) {
                         .y(function(d){return y(Number(d.total));})
                         .curve(d3.curveCardinal);
 
-            chartGroup.append("path").attr("d", line(data)).attr("stroke",colors[i]);
+            covidChartGroup.append("path").attr("d", line(data)).style("stroke",colors[i]);
         });
 
     }
