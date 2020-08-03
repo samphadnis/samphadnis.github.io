@@ -154,11 +154,11 @@ function loadComparisonData() {
     renderComparisonData(0);
 
     addComparisonText(100, 60, "California:Red", "red");
-    addComparisonText(105, 60, "Florida:Orange", "orange");
-    addComparisonText(110, 60, "Texas:Grey", "grey");
-    addComparisonText(115, 60, "New York:Purple", "purple");
-    addComparisonText(120, 60, "New Jersey:Blue", "blue");
-    addComparisonText(125, 60, "Illinois:Green", "green");
+    addComparisonText(200, 60, "Florida:Orange", "orange");
+    addComparisonText(300, 60, "Texas:Grey", "grey");
+    addComparisonText(400, 60, "New York:Purple", "purple");
+    addComparisonText(500, 60, "New Jersey:Blue", "blue");
+    addComparisonText(600, 60, "Illinois:Green", "green");
 
     //parseDate = d3.timeParse("%Y%m%d");
 
