@@ -103,6 +103,8 @@ function renderComparisonCovidData(translateX) {
     
     var covidChartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
+    parseDate = d3.timeParse("%Y%m%d");
+
     for (j=0; j < top5States.length; j++) {
 
         var comparisonState = top5States[j];
@@ -117,7 +119,7 @@ function renderComparisonCovidData(translateX) {
                         .y(function(d){return y(Number(d.total));})
                         .curve(d3.curveLinear);
 
-            covidChartGroup.append("path").attr("d", line(data));
+            covidChartGroup.append("path").attr("d", line(data)).attr("stroke", "green");
         });
 
     }
