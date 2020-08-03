@@ -78,7 +78,6 @@ mobilityData.then(function(data) {
     
     renderData(data, 0, mobilityMonthendData);
 
-    addText(135,80,"Mobility Index timeline");
     addText(135,240,"Low mobility");
     addLine(125,245,245,245);
     addLine(100,35,125,220);
@@ -94,7 +93,5 @@ covidData.then(function(data) {
 
     var  covidMonthendData = [{date:"3/31/2020",number:"188461", tooltip:"In March, COVID cases increased"},{date:"4/30/2020",number:"1075637", tooltip:"In April, the rate of increase was steady"},{date:"5/31/2020",number:"1799036", tooltip:"In May, rate of increase remained steady"},{date:"6/30/2020",number:"2653319", tooltip:"In June, rate of increase remained steady, but increased sharply in July"}];
     renderData(data, 600, covidMonthendData);
-
-    addText(735,80,"COVID-19 cases timeline");
 
 });
