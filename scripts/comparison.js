@@ -1,7 +1,7 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-var cmpheight  = 600;
-var cmpwidth   = 1000;
+var cmpheight  = 300;
+var cmpwidth   = 500;
 var color   = "green";
 var colors  = ["red", "orange", "grey", "purple", "blue", "green"];
 
@@ -41,7 +41,7 @@ function renderComparisonData(translateX) {
 
         console.log("color out:" + color);
         
-        stateComparisonData.then(function(data) {        
+        stateComparisonData.then(function(data, color) {       
 
             parseDate = d3.timeParse("%m/%d/%Y");
 
