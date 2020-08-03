@@ -2,8 +2,8 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 
 var height  = 300;
 var width   = 500;
-var color = "green";
-var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
+var color   = "green";
+var colors  = ["red", "orange", "grey", "purple", "blue", "green"];
 
 var comparisonSvg = d3.select("#comparison").append("svg").attr("height", "100%").attr("width", "100%").attr("id", "comparison-data");
 
@@ -77,7 +77,6 @@ function renderComparisonCovidData(translateX) {
     var margin = {left:50+translateX,right:50, top:40, bottom:0};
 
     var top5States  = ["California", "Florida", "Texas", "New York", "New Jersey", "Illinois"];
-    var colors      = ["red", "orange", "grey", "purple", "blue", "green"];
     
     var covidChartGroup = comparisonSvg.append("g").attr("transform", "translate("+margin.left+", "+margin.top+")");
 
