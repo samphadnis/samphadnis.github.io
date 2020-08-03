@@ -152,6 +152,8 @@ function loadComparisonData() {
             
     renderComparisonData(0);
 
+    addComparisonText(100, 800, "California", "red");
+
     //parseDate = d3.timeParse("%Y%m%d");
 
     //renderComparisonCovidData(600);
