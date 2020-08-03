@@ -42,6 +42,8 @@ function renderComparisonData(translateX) {
                         .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
 
+                        console.log("color:" + colors[i]);
+
             chartGroup.append("path").attr("d", line(data)).attr("stroke", "green");
             
         });
