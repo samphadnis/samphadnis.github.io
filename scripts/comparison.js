@@ -1,7 +1,7 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-var cmpheight  = 300;
-var cmpwidth   = 500;
+var cmpheight  = 600;
+var cmpwidth   = 1000;
 var color   = "green";
 var colors  = ["red", "orange", "grey", "purple", "blue", "green"];
 
