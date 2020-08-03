@@ -59,7 +59,7 @@ function renderComparisonData(translateX) {
         
     }
 
-    chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+height+")").call(xAxis);
+    chartGroup.append("g").attr("class", "x axis").attr("transform", "translate(0, "+cmpheight+")").call(xAxis);
     chartGroup.append("g").attr("class", "y axis").call(yAxis);
 }
 
