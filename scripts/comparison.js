@@ -1,7 +1,7 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-var cmpheight  = 300;
-var cmpwidth   = 500;
+var cmpheight  = 500;
+var cmpwidth   = 700;
 var color   = "green";
 var colors  = ["red", "orange", "grey", "purple", "blue", "green"];
 
@@ -139,6 +139,11 @@ function addComparisonLine(x1, y1, x2, y2) {
     comparisonSvg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2).attr("stroke","blue").attr("stroke-width","1");
 }
 
+function addComparisonText(x, y, text, color) {
+
+    stateSvg.append("text").attr("x",x).attr("y",y).text(text).style('fill', color);
+}
+
 function loadComparisonData() {
 
     console.log("loadComparisonData");
@@ -147,8 +152,8 @@ function loadComparisonData() {
             
     renderComparisonData(0);
 
-    parseDate = d3.timeParse("%Y%m%d");
+    //parseDate = d3.timeParse("%Y%m%d");
 
-    renderComparisonCovidData(600);
+    //renderComparisonCovidData(600);
 
 }

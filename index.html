@@ -26,7 +26,7 @@
                 
                 <li>A state-level mobility data and co-relation with number of COVID cases in the state.</li>
                 
-                <li>Finally, a combined view of the mobility data for the 5 states that have the highest number of COVID cases.</li>
+                <li>Finally, a combined view of the mobility data for the 6 states that have the highest number of COVID cases.</li>
                 </ul>
 
                 Circles on some of the charts provide tooltips that show additional information on hover.
@@ -36,11 +36,11 @@
 
         <div id="viewcontroller">
             <input type="radio" id="navigate-summary" name="viewchooser" value="navigate-summary" checked onclick="ShowHideDiv()">
-            <label for="navigate-summary">All US</label><br>
+            <label for="navigate-summary">All US Mobility Index and COVID-19 timelines</label><br>
             <input type="radio" id="navigate-states" name="viewchooser" value="navigate-states" onclick="ShowHideDiv()">
-            <label for="navigate-states">State Wise</label><br>
+            <label for="navigate-states">State Wise Mobility Index and COVID-19 timelines</label><br>
             <input type="radio" id="navigate-comparison" name="viewchooser" value="navigate-comparison" onclick="ShowHideDiv()">
-            <label for="navigate-comparison">Top 5 States</label><br>
+            <label for="navigate-comparison">Top 6 COVID-19 Case-count States Mobility Index timelines</label><br>
         </div>
 
         <div id="summary" style="display:block;height: 100%;">            
@@ -103,7 +103,15 @@
                     <option value="Wyoming">Wyoming</option>
                 </select>                
         </div>
-        <div id="comparison" style="display:none;height: 100%;">            
+        <div id="comparison" style="display:none;height: 100%;">           
+        </div>
+        <div id="legend">
+            <p style="color:red;">California</p></br>
+            <p style="color:orange;">Florida</p></br>
+            <p style="color:grey;">Texas</p></br>
+            <p style="color:purple;">New York</p></br>
+            <p style="color:blue;">New Jersey</p></br>
+            <p style="color:green;">Illinois</p></br>
         </div>
 
         <script type="text/javascript" src="scripts/controller.js"></script>
