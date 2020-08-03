@@ -42,7 +42,7 @@ function renderComparisonData(translateX) {
                         .y(function(d){return y(Number(d.number));})
                         .curve(d3.curveCardinal);
 
-            chartGroup.append("path").attr("d", line(data)).attr("stroke", colors[i]);
+            chartGroup.append("path").attr("d", line(data)).attr("stroke", "green");
             
         });
         
