@@ -1,7 +1,7 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 
-var cmpheight  = 600;
-var cmpwidth   = 1000;
+var cmpheight  = 300;
+var cmpwidth   = 500;
 var color   = "green";
 var colors  = ["red", "orange", "grey", "purple", "blue", "green"];
 
@@ -115,9 +115,9 @@ function renderComparisonCovidData(translateX) {
 
             var line = d3.line().x(function(d){return x(parseDate(d.date));})
                         .y(function(d){return y(Number(d.total));})
-                        .curve(d3.curveCardinal);
+                        .curve(d3.curveLinear);
 
-            covidChartGroup.append("path").attr("d", line(data)).attr("stroke", colors[j]);
+            covidChartGroup.append("path").attr("d", line(data));
         });
 
     }
@@ -145,8 +145,8 @@ function loadComparisonData() {
             
     renderComparisonData(0);
 
-    //parseDate = d3.timeParse("%Y%m%d");
+    parseDate = d3.timeParse("%Y%m%d");
 
-    //renderComparisonCovidData(600);
+    renderComparisonCovidData(600);
 
 }
